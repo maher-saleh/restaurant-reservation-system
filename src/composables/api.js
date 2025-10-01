@@ -1,5 +1,6 @@
 const res = await fetch('/api/hello');
-const token = await res.json();
+const data = await res.json();
+const token = data.token;
 console.log(token);
 const sendRequest = async (endpoint, method, data = null) => {
 	try {
