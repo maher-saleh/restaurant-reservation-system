@@ -1,7 +1,7 @@
 <template>
 	<Modal :isOpen="isOpen" title="Add Branches" @close="$emit('close')" @save="handleSave">
 		<MultiSelect class="justify-self-center" :options="props.inactiveBranches" v-model="selectedBranches"
-			placeholder="Select branches..." :max-selections="5" label="Branches" />
+			placeholder="Select branches..." :max-selections="20" label="Branches" />
 	</Modal>
 </template>
 
