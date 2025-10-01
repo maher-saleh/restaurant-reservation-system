@@ -1,4 +1,3 @@
-// api/[...path].js
 export default async function handler(req, res) {
     const token = process.env.API_TOKEN;
     const baseUrl = "https://api.foodics.dev/v5";
