@@ -1,5 +1,5 @@
 <template>
-	<Modal :isOpen="isOpen" title="Add Branches" @close="$emit('close')" @save="handleSave">
+	<Modal :isOpen="isOpen" title="Add Branches" @close="handleClose" @save="handleSave">
 		<MultiSelect class="justify-self-center" :options="props.inactiveBranches" v-model="selectedBranches"
 			placeholder="Select branches..." :max-selections="20" label="Branches" />
 	</Modal>
@@ -35,8 +35,14 @@ const props = defineProps({
 
 const emit = defineEmits(['update:inactiveBranches', 'close', 'save']);
 
+const handleClose = () => {
+	emit('close');
+	selectedBranches.value = [];
+};
+
 const handleSave = () => {
 	emit('save', { selectedBranches: selectedBranches.value });
+	selectedBranches.value = [];
 };
 </script>
 

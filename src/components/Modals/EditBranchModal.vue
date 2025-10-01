@@ -1,6 +1,6 @@
 <template>
 	<Modal v-if="branch" :disableReservation=true :isOpen="isOpen"
-		:title="'Edit ' + branch.name + ' branch reservation settings'" @close="emit('close')" @save="handleSave"
+		:title="'Edit ' + branch.name + ' branch reservation settings'" @close="handleClose" @save="handleSave"
 		@confirmed="handleModalDisableReservation">
 		<h3
 			class="flex mb-6 items-center justify-start h-[50px] px-[10px] border-t border-b border-blue-400 bg-blue-100">
@@ -164,6 +164,11 @@ watch(
 const reservationDuration = ref(null);
 const errorMessage = ref('');
 
+const handleClose = () => {
+	emit('close');
+	selectedTables.value = [];
+};
+
 const handleSave = () => {
 	const duration = localReservationDuration.value;
 
@@ -193,6 +198,7 @@ const handleSave = () => {
 	};
 
 	emit('save', updatedData);
+	selectedTables.value = [];
 };
 
 const handleModalDisableReservation = async () => {
