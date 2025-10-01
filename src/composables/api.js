@@ -1,6 +1,7 @@
 // const tokenResponse = await fetch('/api/token');
 // const tokenJson = await tokenResponse.json();
 // const { token, baseURL } = tokenJson;
+
 const sendRequest = async (endpoint, method, data = null) => {
 	try {
 		const response = await fetch(`/api/proxy${endpoint}`, {
@@ -16,7 +17,7 @@ const sendRequest = async (endpoint, method, data = null) => {
 		});
 		if (!response.ok) throw new Error(await response.text());
 		const json = await response.json();
-		return json.data;
+		return json.data || json;
 	} catch (error) {
 		console.error('API Error:', error);
 		return Promise.reject(error);
