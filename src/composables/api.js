@@ -1,7 +1,7 @@
 // const tokenResponse = await fetch('/api/token');
 // const tokenJson = await tokenResponse.json();
 // const { token } = tokenJson;
-console.log(token);
+// console.log(token);
 const sendRequest = async (endpoint, method, data = null) => {
 	try {
 		const response = await fetch(`/api/proxy${endpoint}`, {
