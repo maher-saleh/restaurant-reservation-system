@@ -3,7 +3,7 @@ const tokenJson = await tokenResponse.json();
 const { token, baseURL } = tokenJson;
 const sendRequest = async (endpoint, method, data = null) => {
 	try {
-		const response = await fetch(`${baseURL}/${endpoint}`, {
+		const response = await fetch(`${baseURL}${endpoint}`, {
 			method,
 			headers: {
 				'Content-Type': 'application/json',
