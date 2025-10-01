@@ -2,9 +2,7 @@ export default async function handler(req, res) {
     const token = process.env.API_TOKEN;
     const baseUrl = "https://api.foodics.dev/v5";
     const path = req.query.path ? req.query.path.join("/") : "";
-    const { path: _, ...queryParams } = req.query;
-    const queryString = new URLSearchParams(queryParams).toString();
-
+    const queryString = req.url.includes("?") ? req.url.split("?")[1] : "";
     const url = `${baseUrl}/${path}${queryString ? `?${queryString}` : ""}`;
 
     try {
