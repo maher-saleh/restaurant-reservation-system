@@ -1,21 +1,25 @@
 export default async function handler(req, res) {
     try {
-        // Build the Foodics API URL
         const foodicsUrl = `https://api.foodics.dev/v5${req.url.replace(/^\/api/, '')}`;
 
-        // Call Foodics
         const response = await fetch(foodicsUrl, {
             method: req.method,
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${process.env.FOODICS_TOKEN}`, // adjust to your env var
+                'Authorization': `Bearer ${process.env.API_TOKEN}`, // must exist!
             },
             body: req.method !== 'GET' ? JSON.stringify(req.body) : undefined,
         });
 
-        const data = await response.json();
+        const text = await response.text();
 
-        // Return both the data and debug info
+        let data;
+        try {
+            data = JSON.parse(text);
+        } catch {
+            data = { raw: text };
+        }
+
         res.status(response.status).json({
             ok: response.ok,
             url: foodicsUrl,
