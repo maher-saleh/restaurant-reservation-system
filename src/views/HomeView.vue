@@ -1,6 +1,6 @@
 <template>
-	<div class="home">
-		<h1 id="title" class="text-4xl font-bold">Restaurant Reservation System</h1>
+	<div class="my-10 home">
+		<h1 id="title" class="mb-10 text-4xl font-bold">Restaurant Reservation System</h1>
 		<!-- Modals -->
 		<AddBranchesModal :isOpen="isAddBranchesModalOpen" @close="closeModal()" @save="handleAddBranchesSave"
 			:inactiveBranches="[...inactiveBranches]" />
@@ -8,7 +8,8 @@
 			:inactiveBranches="[...inactiveBranches]" :branch="selectedBranch" @disable="handleDisableBranch" />
 		<!-- Modals -->
 
-		<div class="container flex flex-row items-center justify-between">
+		<div class="border-t border-b border-gray-300 py-3.5 container flex flex-row items-center
+			justify-between my-5 justify-self-center">
 			<h2 class="text-xl font-bold">Reservations</h2>
 			<button @click="handleDisableReservations"
 				class="px-4 py-2 font-semibold text-white transition duration-300 bg-purple-600 rounded-lg shadow-lg hover:bg-purple-700">Disable
@@ -17,7 +18,7 @@
 
 		<div class="container branches-container">
 			<button
-				class="inline-flex items-center gap-2 px-4 py-2 font-medium text-gray-700 transition-colors border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
+				class="float-right mb-2.5 inline-flex items-center gap-2 px-4 py-2 font-medium text-gray-700 transition-colors border border-gray-300 rounded-lg hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-200"
 				@click="isAddBranchesModalOpen = true">
 				Add Branches
 			</button>
