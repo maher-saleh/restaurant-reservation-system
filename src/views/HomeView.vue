@@ -100,7 +100,7 @@ const handleEditBranchSave = async (data) => {
 
 			try {
 				const response = await sendRequest(
-					`/api/branches/${branches[branchIndex].id}`,
+					`/branches/${branches[branchIndex].id}`,
 					'PUT',
 					payload,
 				);
@@ -130,7 +130,7 @@ const handleEditBranchSave = async (data) => {
 
 onMounted(async () => {
 	if (branches.length <= 0) {
-		const data = await sendRequest('/api/branches?include[0]=sections&include[1]=sections.tables', 'GET');
+		const data = await sendRequest('/branches?include[0]=sections&include[1]=sections.tables', 'GET');
 		branches.splice(0, branches.length, ...data);
 	}
 });
@@ -140,7 +140,7 @@ const handleAddBranchesSave = (data) => {
 		const branchIndex = branches.findIndex((b) => b.id === branch.id);
 		if (branchIndex !== -1) {
 			branches[branchIndex].accepts_reservations = true;
-			sendRequest(`/api/branches/${branches[branchIndex].id}`, 'PUT', { accepts_reservations: true });
+			sendRequest(`/branches/${branches[branchIndex].id}`, 'PUT', { accepts_reservations: true });
 		}
 	});
 
@@ -152,13 +152,13 @@ const handleDisableReservations = () => {
 		const branchIndex = branches.findIndex((b) => b.id === branch.id);
 		if (branchIndex !== -1) {
 			branches[branchIndex].accepts_reservations = false;
-			sendRequest(`/api/branches/${branches[branchIndex].id}`, 'PUT', { accepts_reservations: false });
+			sendRequest(`/branches/${branches[branchIndex].id}`, 'PUT', { accepts_reservations: false });
 		}
 	});
 };
 
 const handleDisableBranch = (branch) => {
-	sendRequest(`/api/branches/${branch.id}`, 'PUT', { accepts_reservations: false });
+	sendRequest(`/branches/${branch.id}`, 'PUT', { accepts_reservations: false });
 	const index = branches.findIndex((b) => b.id === branch.id);
 	if (index !== -1) {
 		branches[index].accepts_reservations = false;
