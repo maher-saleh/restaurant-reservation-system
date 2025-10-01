@@ -1,4 +1,6 @@
-const token = process.env.API_TOKEN;
+const res = await fetch("/api/hello");
+const token = await res.json();
+console.log(token)
 const sendRequest = async (endpoint, method, data = null) => {
 	try {
 		const response = await fetch(endpoint, {
