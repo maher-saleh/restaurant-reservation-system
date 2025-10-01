@@ -1,18 +1,18 @@
 <template>
 	<div v-if="isOpen"
 		class="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black bg-opacity-50">
-		<div class="container w-full max-w-xl p-6 mx-4 bg-white rounded-lg shadow-lg">
+		<div class="container w-full max-w-2xl p-6 mx-4 bg-white rounded-lg shadow-lg">
 			<!-- Modal Header -->
 			<h2 class="mb-4 text-xl font-bold font-Roboto">{{ title }}</h2>
 
 			<!-- Modal Content -->
-			<div class="mb-4 max-h-[70vh] overflow-auto">
+			<div class="mb-4 max-h-[70vh] overflow-auto pr-1">
 				<slot>Default modal content</slot>
 			</div>
 
 			<!-- Modal Actions -->
-			<div>
-				<button v-if="disableReservation" class="text-blue-600 hover:underline"
+			<div class="flex items-center justify-between">
+				<button v-if="disableReservation" class="text-indigo-800 hover:underline"
 					@click="handleConfirmation">Disable reservation</button>
 				<div class="flex justify-end space-x-2">
 					<button @click.stop="$emit('close')"

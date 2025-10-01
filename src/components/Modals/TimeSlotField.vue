@@ -1,7 +1,8 @@
 <template>
 	<h1 class="flex justify-between text-left">
 		<span>{{ label.charAt(0).toUpperCase() + label.slice(1) }}</span>
-		<button v-if="label == 'saturday'" class="text-blue-600 hover:underline" @click="handleApplyOnAllDays">Apply on all
+		<button v-if="label == 'saturday'" class="text-indigo-800 hover:underline" @click="handleApplyOnAllDays">Apply
+			on all
 			days</button>
 	</h1>
 	<div class="flex justify-between w-full max-w-2xl">
