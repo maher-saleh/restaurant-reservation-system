@@ -15,8 +15,8 @@ export default async function handler(req, res) {
             },
         };
 
-        if (!['GET', 'HEAD'].includes(req.method) && req.body && req.body.length > 0) {
-            options.body = JSON.stringify(JSON.parse(req.body.toString()));
+        if (!['GET', 'HEAD'].includes(req.method) && req.body) {
+            options.body = JSON.stringify(req.body);
         }
 
         const response = await fetch(url, options);
